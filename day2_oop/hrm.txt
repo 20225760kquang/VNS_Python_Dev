@@ -1,0 +1,3 @@
+manager1|pass123|Manager
+director1|pass456|Director
+Nguyen Khac Quang|1|Manager

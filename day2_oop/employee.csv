@@ -1,0 +1,8 @@
+emp_id,name,birth_year,department,salary,position,start_date
+E001,John Smith,2000,IT,5000.0,Intern,2024-01-15
+E002,Sarah Johnson,1998,IT,7000.0,Employee,2023-06-10
+E003,Mike Williams,1995,Marketing,8500.0,Employee,2022-03-20
+E004,Emily Brown,1992,Marketing,12000.0,Manager,2020-11-05
+E005,David Lee,1990,Media,10000.0,Manager,2021-08-12
+E006,Lisa Davis,1988,IT,15000.0,Director,2019-02-01
+123,Mac Thanh Binh,2004,IT,100.0,Intern,2026-04-02
