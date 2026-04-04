@@ -4,12 +4,12 @@ import argparse
 import csv
 from pathlib import Path
 
-from utils.handle_json import load_json, transform_records
+from handle_json import load_json, transform_records
 
 
-DEFAULT_JSON_PATH = "crawl_data/bongdaplus_crawled.json"
 DEFAULT_CSV_PATH = "bongdaplus_news.csv"
-
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_JSON_PATH = str(PROJECT_ROOT / "bongdaplus_crawled.json")
 
 def format_timestamp(dt) -> str:
 	return dt.strftime("%Y-%m-%d %H:%M:%S")

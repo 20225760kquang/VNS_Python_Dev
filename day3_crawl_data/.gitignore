@@ -1,3 +1,5 @@
 .env
 __pycache__
 .vscode
+bongdaplus_news.csv
+bongdaplus_crawled.json
