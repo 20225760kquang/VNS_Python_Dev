@@ -1,0 +1,16 @@
+user_id|name|email|hashed_password|created_at
+1|User 1|user1@example.com|hashed_pw_user_1|2025-12-02T00:00:00
+2|User 2|user2@example.com|hashed_pw_user_2|2025-12-03T00:00:00
+3|User 3|user3@example.com|hashed_pw_user_3|2025-12-04T00:00:00
+4|User 4|user4@example.com|hashed_pw_user_4|2025-12-05T00:00:00
+5|User 5|user5@example.com|hashed_pw_user_5|2025-12-06T00:00:00
+6|User 6|user6@example.com|hashed_pw_user_6|2025-12-07T00:00:00
+7|User 7|user7@example.com|hashed_pw_user_7|2025-12-08T00:00:00
+8|User 8|user8@example.com|hashed_pw_user_8|2025-12-09T00:00:00
+9|User 9|user9@example.com|hashed_pw_user_9|2025-12-10T00:00:00
+10|User 10|user10@example.com|hashed_pw_user_10|2025-12-11T00:00:00
+11|User 11|user11@example.com|hashed_pw_user_11|2025-12-12T00:00:00
+12|User 12|user12@example.com|hashed_pw_user_12|2025-12-13T00:00:00
+13|User 13|user13@example.com|hashed_pw_user_13|2025-12-14T00:00:00
+14|User 14|user14@example.com|hashed_pw_user_14|2025-12-15T00:00:00
+15|User 15|user15@example.com|hashed_pw_user_15|2025-12-16T00:00:00
