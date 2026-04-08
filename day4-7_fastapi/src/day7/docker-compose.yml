@@ -1,0 +1,51 @@
+services:
+  database: 
+    image : postgres:18-alpine 
+    container_name : blog_db
+    restart : unless-stopped
+    environment : 
+      POSTGRES_DB: personal_blog 
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: "1"
+    ports: 
+      - "5432:5432"  
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d personal_blog"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: blog_migrate
+    depends_on:
+      database:
+        condition: service_healthy
+    env_file:
+      - .env
+    command: alembic upgrade head
+    restart: "no"
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: blog_api
+    depends_on:
+      database:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./:/app
+
+volumes:
+  postgres_data:
