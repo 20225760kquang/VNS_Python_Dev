@@ -13,7 +13,6 @@ from app.core.security import hash_password, verify_password, create_access_toke
 
 router = APIRouter()
 
-
 async def authenticate_user(email: str, password: str, db: AsyncSession) -> User:
     result = await db.execute(select(User).where(User.email == email))
     user = result.scalars().first()
@@ -61,7 +60,7 @@ async def login_app(request : UserLogin,
     ):
     user = await authenticate_user(request.email, request.password, db)
 
-    # 3.Generate JWT 
+    # Tạo JWT 
     payload = {"sub" : str(user.user_id)}
     jwt_token = create_access_token(payload)
     
@@ -86,7 +85,7 @@ async def login_for_access_token(
         token_type="bearer",
     )
 
-
+# 4. POST /logout 
 @router.post("/logout")
 async def logout(
     _: User = Depends(get_current_user),

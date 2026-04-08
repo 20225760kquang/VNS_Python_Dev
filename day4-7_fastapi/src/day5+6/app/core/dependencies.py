@@ -7,7 +7,7 @@ from app.database import get_db
 from app.models import User 
 from app.core.security import SECRET_KEY,ALGORITHM, is_token_revoked
 
-# Dùng OAuth2 token endpoint chuẩn để Swagger tự động lấy/gắn bearer token
+# Dùng OAuth2 token endpoint chuẩn để Swagger tự động LẤY/GẮN bearer token
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 async def get_current_user(
