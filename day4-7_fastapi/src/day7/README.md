@@ -161,14 +161,23 @@ docker compose down -v
 
 Đảm bảo file `.env` có các biến tối thiểu:
 
-- `DATABASE_URL`
+### Biến Database URL (phân biệt Local vs Docker)
+- `LOCAL_DATABASE_URL`: Dùng khi chạy `fastapi dev` local, trỏ về `localhost`
+  - Ví dụ: `postgresql://postgres:1@localhost:5432/personal_blog`
+- `DOCKER_DATABASE_URL`: Dùng khi chạy qua `docker compose`, trỏ về service `database` trong compose network
+  - Ví dụ: `postgresql://postgres:1@database:5432/personal_blog`
+- `DATABASE_URL` (deprecated): Giữ lại để backward compatibility, fallback nếu LOCAL/DOCKER không có
+
+### Biến khác
 - `SECRET_KEY`
 - `ALGORITHM`
 - `ACCESS_TOKEN_EXPIRE_MINUTES`
 - `ADMIN_REGISTER_KEY`
 - (tuỳ chọn) `CORS_ALLOW_ORIGINS`
 
-Lưu ý khi chạy bằng Compose: giá trị host trong `DATABASE_URL` nên trỏ tới service DB trong compose (thường là `database`) thay vì `localhost`.
+### Cách hoạt động:
+1. **Chạy local** (`fastapi dev`): `app/database.py` sẽ dùng `LOCAL_DATABASE_URL`
+2. **Chạy Docker Compose**: `alembic/env.py` sẽ dùng `DOCKER_DATABASE_URL`, `app/database.py` cũng có access vào cả 2 (fallback logic)
 
 ---
 

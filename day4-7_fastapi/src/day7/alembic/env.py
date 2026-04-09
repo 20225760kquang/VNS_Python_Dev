@@ -25,10 +25,9 @@ load_dotenv(Path(__file__).parent.parent / ".env")
 config = context.config
 """ 
 Bổ sung biến môi trường
+Dùng DOCKER_DATABASE_URL khi chạy qua Docker Compose, fallback DATABASE_URL
 """
-config.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL"))
-
-# Interpret the config file for Python logging.
+config.set_main_option("sqlalchemy.url", os.getenv("DOCKER_DATABASE_URL") or os.getenv("DATABASE_URL"))
 # This line sets up loggers basically.
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
