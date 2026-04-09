@@ -8,8 +8,14 @@ import os
 load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env", override=True)
 
 # 1.Engine : Kết nối Python & SQL Database (Postgresql)
-# Dùng LOCAL_DATABASE_URL cho dev local, fallback DATABASE_URL nếu cần
-database_url = os.getenv("LOCAL_DATABASE_URL") or os.getenv("DATABASE_URL")
+
+# Nhận diện context: ENVIRONMENT=docker hoặc ENVIRONMENT=local
+environment = os.getenv("ENVIRONMENT", "local").lower()
+if environment == "docker":
+    database_url = os.getenv("DOCKER_DATABASE_URL")
+else:
+    database_url = os.getenv("LOCAL_DATABASE_URL") 
+    
 if database_url.startswith("postgresql://"):
     database_url = database_url.replace("postgresql://", "postgresql+asyncpg://", 1)
 elif database_url.startswith("postgres://"):

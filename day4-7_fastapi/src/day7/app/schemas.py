@@ -14,7 +14,7 @@ class PasswordAuthenticator(BaseModel):
     Yêu cầu khi người dùng đăng kí/ đăng nhập phải xác thực mật khẩu phải đúng định dạng
     như dưới bao gồm có chữ cái viết hoa/thường, chữ số ! 
     """
-    password: str
+    password: str = Field(min_length=8, max_length=72)
 
     @field_validator("password", mode="after")
     @classmethod
