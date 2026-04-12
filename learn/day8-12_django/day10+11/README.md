@@ -95,20 +95,20 @@ uv run python manage.py migrate
 #### Cách 1 - Redis bằng Docker (khuyến nghị)
 
 ```bash
-docker run -d --name redis-day10+11 -p 6379:6379 redis:7
+docker run -d --name redis-django -p 6379:6379 redis:7
 docker ps
 ```
 
 Nếu đã tạo container từ trước:
 
 ```bash
-docker start redis-day10+11
+docker start redis-django
 ```
 
 Dừng Redis:
 
 ```bash
-docker stop redis-day10+11
+docker stop redis-django
 ```
 
 #### Cách 2 - Redis local (nếu đã cài redis-server)
